@@ -102,7 +102,7 @@ export default function BondSensitivitySlider() {
                   Jak to funguje?
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Fond investuje do státních dluhopisů s průměrnou durací {duration} let. 
+                  Tento model ilustruje citlivost dlouhodobých státních dluhopisů (durace {duration} let), které tvoří jádro portfolia. 
                   {rateChange < 0 ? (
                     <> Při <strong className="text-foreground">poklesu</strong> úrokových sazeb o {formatPercent(Math.abs(rateChange))} 
                     roste tržní cena existujících dluhopisů, což přináší kapitálový zisk {formatPercent(priceChange)}. 
@@ -122,7 +122,8 @@ export default function BondSensitivitySlider() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            * Modelový výpočet pro ilustraci. Skutečné výnosy se mohou lišit v závislosti na konkrétním složení portfolia a tržních podmínkách.
+            * Zjednodušený model ukazuje citlivost dlouhodobých státních dluhopisů (60% portfolia). 
+            Skutečné výnosy fondu závisí na celkovém složení portfolia a tržních podmínkách.
           </p>
         </div>
       </div>
