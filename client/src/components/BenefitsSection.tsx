@@ -61,29 +61,32 @@ export default function BenefitsSection() {
             return (
               <Card
                 key={index}
-                className="p-8 hover-elevate transition-transform duration-200"
+                className="p-8 hover-elevate transition-all duration-300 group relative overflow-hidden"
                 data-testid={`card-benefit-${index}`}
               >
-                <div className="rounded-md bg-primary/10 p-3 w-fit mb-6">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl transition-all duration-500 group-hover:scale-150" />
+                <div className="relative">
+                  <div className="rounded-md bg-primary/10 p-3 w-fit mb-6 transition-transform duration-300 group-hover:scale-110">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-xl mb-3">{benefit.title}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {benefit.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {benefit.features.map((feature, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2 text-sm"
+                      >
+                        <div className="rounded-full bg-primary/20 p-0.5 mt-1">
+                          <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        </div>
+                        <span className="text-muted-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="font-semibold text-xl mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {benefit.description}
-                </p>
-                <ul className="space-y-2">
-                  {benefit.features.map((feature, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-2 text-sm"
-                    >
-                      <div className="rounded-full bg-primary/20 p-0.5 mt-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      </div>
-                      <span className="text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
               </Card>
             );
           })}

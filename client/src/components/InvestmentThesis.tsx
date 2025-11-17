@@ -63,26 +63,29 @@ export default function InvestmentThesis() {
           </div>
 
           <div className="space-y-6">
-            <Card className="p-8">
-              <div className="text-center border-b border-border pb-6 mb-6">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                  Očekávaný výnos
-                </p>
-                <div className="font-bold text-5xl md:text-6xl tabular-nums text-primary">
-                  7<span className="text-3xl">%</span>
+            <Card className="p-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+              <div className="relative">
+                <div className="text-center border-b border-border pb-6 mb-6">
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                    Očekávaný výnos
+                  </p>
+                  <div className="font-bold text-5xl md:text-6xl tabular-nums text-primary">
+                    7<span className="text-3xl">%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">ročně (p.a.)</p>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">ročně (p.a.)</p>
-              </div>
-              <div className="text-center">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                  Daňová sazba
-                </p>
-                <div className="font-bold text-4xl md:text-5xl tabular-nums">
-                  5<span className="text-2xl">%</span>
+                <div className="text-center">
+                  <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                    Daňová sazba
+                  </p>
+                  <div className="font-bold text-4xl md:text-5xl tabular-nums">
+                    5<span className="text-2xl">%</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    z příjmů fondu
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">
-                  z příjmů fondu
-                </p>
               </div>
             </Card>
 
