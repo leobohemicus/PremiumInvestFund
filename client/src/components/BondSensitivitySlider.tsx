@@ -14,29 +14,19 @@ export default function BondSensitivitySlider() {
   const priceChange = -duration * rateChange;
   const totalReturn = currentYield + priceChange;
 
-  // Generování dat pro graf - nelineární projekce ceny dluhopisu
+  // Generování dat pro graf - 5 bodů s fixními hodnotami + predikce
   const chartData = useMemo(() => {
-    const numPoints = 20;
     const finalValue = 100 + totalReturn; // Konečná hodnota odpovídá celkovému výnosu
-    const tau = duration / 3; // Časová konstanta pro exponenciální přechod
     
-    return Array.from({ length: numPoints }, (_, i) => {
-      const progress = i / (numPoints - 1); // 0 až 1
-      
-      // Exponenciální easing pro plynulou nelineární křivku
-      // Rychlejší změna na začátku, pomalejší ke konci (typické pro bond price adjustment)
-      const easedProgress = 1 - Math.exp(-progress * duration / tau);
-      const normalizedEasing = easedProgress / (1 - Math.exp(-duration / tau));
-      
-      // Interpolace mezi 100 (start) a finalValue (konec)
-      const index = 100 + (finalValue - 100) * normalizedEasing;
-      
-      return {
-        name: '', // Prázdný název pro všechny body
-        cena: Number(index.toFixed(2)),
-      };
-    });
-  }, [totalReturn, duration]);
+    // 5 bodů: první 4 fixní kolem 95-100 (volatilita), poslední = predikce
+    return [
+      { name: '', cena: 84 },   // Bod 1: historická volatilita
+      { name: '', cena: 92 },   // Bod 2: historická volatilita
+      { name: '', cena: 87 },   // Bod 3: historická volatilita
+      { name: '', cena: 100 },  // Bod 4: současná hodnota (přesně 100)
+      { name: '', cena: Number(finalValue.toFixed(2)) }  // Bod 5: predikce
+    ];
+  }, [totalReturn]);
   
   // Vypočítat domain pro osu Y tak, aby 100 bylo uprostřed
   const yAxisDomain = useMemo(() => {
@@ -204,13 +194,18 @@ export default function BondSensitivitySlider() {
                       formatter={(value: number) => [`${value.toFixed(2)}`, 'Cena']}
                     />
                     <Line 
-                      type="monotone" 
+                      type="linear" 
                       dataKey="cena" 
                       stroke="url(#lineGradient)"
                       strokeWidth={3}
-                      dot={false}
+                      dot={{ 
+                        fill: 'hsl(var(--primary))', 
+                        r: 6,
+                        strokeWidth: 2,
+                        stroke: 'hsl(var(--background))'
+                      }}
                       activeDot={{ 
-                        r: 7,
+                        r: 8,
                         fill: 'hsl(var(--primary))',
                         filter: 'url(#glow)'
                       }}
@@ -271,7 +266,7 @@ export default function BondSensitivitySlider() {
                   ) : (
                     <> Při <strong className="text-foreground">nezměněných</strong> úrokových sazbách fond generuje bazický výnos {formatPercentAbs(currentYield)} ročně z kupónových plateb.</>
                   )}
-                  {' '}Graf ukazuje exponenciální projekci vývoje indexu ceny v čase.
+                  {' '}Graf ukazuje projekci vývoje indexu ceny pomocí zjednodušeného 5-bodového modelu.
                 </p>
               </div>
             </div>
