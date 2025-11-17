@@ -8,7 +8,7 @@ export default function BondSensitivitySlider() {
   const [rateChange, setRateChange] = useState(0);
   const [duration, setDuration] = useState(15);
   
-  const currentYield = 7;
+  const currentYield = 6.05;
   
   // Výpočet změny ceny podle durace
   const priceChange = -duration * rateChange;
@@ -18,24 +18,20 @@ export default function BondSensitivitySlider() {
   const chartData = useMemo(() => {
     const finalValue = 100 + totalReturn; // Konečná hodnota odpovídá celkovému výnosu
     
-    // 5 bodů: první 4 fixní kolem 95-100 (volatilita), poslední = predikce
+    // 5 bodů: první 4 fixní kolem 98 (±2.5 pb volatilita), poslední = predikce
     return [
-      { name: '', cena: 84 },   // Bod 1: historická volatilita
-      { name: '', cena: 92 },   // Bod 2: historická volatilita
-      { name: '', cena: 87 },   // Bod 3: historická volatilita
-      { name: '', cena: 100 },  // Bod 4: současná hodnota (přesně 100)
+      { name: '', cena: 96.0 },   // Bod 1: historická volatilita -2 pb od 98
+      { name: '', cena: 99.5 },   // Bod 2: historická volatilita +1.5 pb od 98
+      { name: '', cena: 97.5 },   // Bod 3: historická volatilita -0.5 pb od 98
+      { name: '', cena: 100 },    // Bod 4: současná hodnota (přesně 100)
       { name: '', cena: Number(finalValue.toFixed(2)) }  // Bod 5: predikce
     ];
   }, [totalReturn]);
   
-  // Vypočítat domain pro osu Y tak, aby 100 bylo uprostřed
-  const yAxisDomain = useMemo(() => {
-    const values = chartData.map(d => d.cena);
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-    const maxDeviation = Math.max(Math.abs(100 - min), Math.abs(max - 100));
-    return [100 - maxDeviation, 100 + maxDeviation];
-  }, [chartData]);
+  // Statická osa Y pokrývající celý rozsah možných výsledků fondu
+  // Max scénář: rate -4%, duration 20 → totalReturn ~+86% → hodnota ~186
+  // Min scénář: rate +2%, duration 20 → totalReturn ~-34% → hodnota ~66
+  const yAxisDomain = [60, 190];
 
   const formatPercent = (value: number) => {
     const sign = value > 0 ? "+" : "";

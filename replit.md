@@ -43,7 +43,7 @@ Preferred communication style: Simple, everyday language.
 **Key Interactive Features:**
 - AnimatedBackground: Canvas-based particle system with reduced-motion support
 - AnimatedCounter: Intersection Observer-based number animations with decimal support (e.g., 6.5, 14.1)
-- BondSensitivitySlider: Dual-slider interactive calculator (rate change -4% to +2%, duration 5-20 years) with Recharts LineChart using simplified 5-point linear projection (4 fixed historical points at 84, 92, 87, 100 + dynamic 5th point showing prediction)
+- BondSensitivitySlider: Dual-slider interactive calculator (rate change -4% to +2%, duration 5-20 years) with Recharts LineChart using simplified 5-point linear projection (4 fixed historical points oscillating around 98 ±2.5pb: 96.0, 99.5, 97.5, 100 + dynamic 5th point showing prediction). Y-axis is static [60, 190] covering full range of potential fund outcomes
 - Full WCAG 2.1 AA accessibility with aria-labelledby, <output role="status" aria-live="polite"> for screen readers
 
 ### Backend Architecture
