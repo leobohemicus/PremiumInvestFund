@@ -14,24 +14,38 @@ export default function BondSensitivitySlider() {
   const priceChange = -duration * rateChange;
   const totalReturn = currentYield + priceChange;
 
-  // Generování dat pro graf - index ceny dluhopisu přes 12 měsíců
+  // Generování dat pro graf - nelineární projekce ceny dluhopisu
   const chartData = useMemo(() => {
-    const months = ['Led', 'Úno', 'Bře', 'Dub', 'Kvě', 'Čer', 'Čvn', 'Srp', 'Zář', 'Říj', 'Lis', 'Pro'];
-    const monthlyYieldAccrual = currentYield / 12; // Měsíční akruální výnos
-    const monthlyPriceChange = priceChange / 12; // Měsíční kapitálová změna
+    const numPoints = 20;
+    const finalValue = 100 + totalReturn; // Konečná hodnota odpovídá celkovému výnosu
+    const tau = duration / 3; // Časová konstanta pro exponenciální přechod
     
-    let cumulativeIndex = 100;
-    
-    return months.map((month, index) => {
-      if (index > 0) {
-        cumulativeIndex += monthlyYieldAccrual + monthlyPriceChange;
-      }
+    return Array.from({ length: numPoints }, (_, i) => {
+      const progress = i / (numPoints - 1); // 0 až 1
+      
+      // Exponenciální easing pro plynulou nelineární křivku
+      // Rychlejší změna na začátku, pomalejší ke konci (typické pro bond price adjustment)
+      const easedProgress = 1 - Math.exp(-progress * duration / tau);
+      const normalizedEasing = easedProgress / (1 - Math.exp(-duration / tau));
+      
+      // Interpolace mezi 100 (start) a finalValue (konec)
+      const index = 100 + (finalValue - 100) * normalizedEasing;
+      
       return {
-        name: month,
-        cena: Number(cumulativeIndex.toFixed(2)),
+        name: '', // Prázdný název pro všechny body
+        cena: Number(index.toFixed(2)),
       };
     });
-  }, [rateChange, duration, currentYield, priceChange]);
+  }, [totalReturn, duration]);
+  
+  // Vypočítat domain pro osu Y tak, aby 100 bylo uprostřed
+  const yAxisDomain = useMemo(() => {
+    const values = chartData.map(d => d.cena);
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const maxDeviation = Math.max(Math.abs(100 - min), Math.abs(max - 100));
+    return [100 - maxDeviation, 100 + maxDeviation];
+  }, [chartData]);
 
   const formatPercent = (value: number) => {
     const sign = value > 0 ? "+" : "";
@@ -60,22 +74,22 @@ export default function BondSensitivitySlider() {
           </p>
         </div>
 
-        <Card className="p-8 md:p-12 border-2">
-          <div className="space-y-8">
+        <Card className="p-6 md:p-8 border-2">
+          <div className="space-y-6">
             {/* První slider - Změna úrokové sazby */}
             <div className="text-center">
-              <p id="rate-label" className="text-sm text-muted-foreground mb-4">
+              <p id="rate-label" className="text-sm text-muted-foreground mb-2">
                 Změna úrokové sazby (Δy %)
               </p>
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <TrendingDown className={`h-6 w-6 ${rateChange < 0 ? 'text-primary' : 'text-muted-foreground/30'}`} />
-                <output role="status" aria-live="polite" className="font-bold text-4xl md:text-6xl tabular-nums">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <TrendingDown className={`h-5 w-5 ${rateChange < 0 ? 'text-primary' : 'text-muted-foreground/30'}`} />
+                <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums">
                   {formatPercent(rateChange)}
                 </output>
-                <TrendingUp className={`h-6 w-6 ${rateChange > 0 ? 'text-destructive' : 'text-muted-foreground/30'}`} />
+                <TrendingUp className={`h-5 w-5 ${rateChange > 0 ? 'text-destructive' : 'text-muted-foreground/30'}`} />
               </div>
               
-              <div className="px-4 md:px-12">
+              <div className="px-4 md:px-8">
                 <Slider
                   value={[rateChange]}
                   onValueChange={(values) => setRateChange(values[0])}
@@ -86,7 +100,7 @@ export default function BondSensitivitySlider() {
                   data-testid="slider-rate-change"
                   aria-labelledby="rate-label"
                 />
-                <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
                   <span>-4%</span>
                   <span>0%</span>
                   <span>+2%</span>
@@ -95,15 +109,15 @@ export default function BondSensitivitySlider() {
             </div>
 
             {/* Druhý slider - Durace */}
-            <div className="text-center pt-6 border-t border-border">
-              <p id="duration-label" className="text-sm text-muted-foreground mb-4">
+            <div className="text-center pt-4 border-t border-border">
+              <p id="duration-label" className="text-sm text-muted-foreground mb-2">
                 Průměrná délka splatnosti dluhopisu (Durace)
               </p>
-              <output role="status" aria-live="polite" className="font-bold text-4xl md:text-5xl tabular-nums mb-6 block">
-                {duration} <span className="text-2xl text-muted-foreground">let</span>
+              <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums mb-3 block">
+                {duration} <span className="text-lg text-muted-foreground">let</span>
               </output>
               
-              <div className="px-4 md:px-12">
+              <div className="px-4 md:px-8">
                 <Slider
                   value={[duration]}
                   onValueChange={(values) => setDuration(values[0])}
@@ -114,7 +128,7 @@ export default function BondSensitivitySlider() {
                   data-testid="slider-duration"
                   aria-labelledby="duration-label"
                 />
-                <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
                   <span>5 let</span>
                   <span>12 let</span>
                   <span>20 let</span>
@@ -122,6 +136,93 @@ export default function BondSensitivitySlider() {
               </div>
             </div>
 
+            {/* Graf */}
+            <div className="pt-6 border-t border-border">
+              <div className="mb-4">
+                <h4 className="font-semibold text-center mb-2">
+                  Projekce indexu ceny dluhopisu
+                </h4>
+                <p className="text-sm text-muted-foreground text-center">
+                  Vývoj v čase (závislý na duraci)
+                </p>
+              </div>
+              <div className="h-80 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={chartData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 30 }}
+                  >
+                    <defs>
+                      <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={1} />
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <CartesianGrid 
+                      strokeDasharray="3 3" 
+                      stroke="hsl(var(--border))" 
+                      opacity={0.3}
+                    />
+                    <XAxis 
+                      dataKey="name" 
+                      stroke="hsl(var(--muted-foreground))"
+                      tick={false}
+                      label={{ 
+                        value: 'Čas', 
+                        position: 'insideBottom',
+                        offset: -10,
+                        style: { fill: 'hsl(var(--muted-foreground))', fontSize: 12 }
+                      }}
+                    />
+                    <YAxis 
+                      stroke="hsl(var(--muted-foreground))"
+                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                      domain={yAxisDomain}
+                      label={{ 
+                        value: 'Index ceny', 
+                        angle: -90, 
+                        position: 'insideLeft',
+                        style: { fill: 'hsl(var(--muted-foreground))', fontSize: 12 }
+                      }}
+                    />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'hsl(var(--card))',
+                        border: '1px solid hsl(var(--border))',
+                        borderRadius: '8px',
+                        padding: '8px 12px'
+                      }}
+                      labelStyle={{ color: 'hsl(var(--foreground))', fontWeight: 600 }}
+                      itemStyle={{ color: 'hsl(var(--primary))' }}
+                      formatter={(value: number) => [`${value.toFixed(2)}`, 'Cena']}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="cena" 
+                      stroke="url(#lineGradient)"
+                      strokeWidth={3}
+                      dot={false}
+                      activeDot={{ 
+                        r: 7,
+                        fill: 'hsl(var(--primary))',
+                        filter: 'url(#glow)'
+                      }}
+                      isAnimationActive={true}
+                      animationDuration={800}
+                      animationEasing="ease-in-out"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+            
             {/* KPI boxy */}
             <div className="grid md:grid-cols-3 gap-6 pt-6 border-t border-border">
               <div className="text-center p-6 rounded-lg bg-muted/50">
@@ -149,92 +250,6 @@ export default function BondSensitivitySlider() {
               </div>
             </div>
 
-            {/* Graf */}
-            <div className="pt-6 border-t border-border">
-              <div className="mb-4">
-                <h4 className="font-semibold text-center mb-2">
-                  Projekce indexu ceny dluhopisu
-                </h4>
-                <p className="text-sm text-muted-foreground text-center">
-                  Vývoj během následujících 12 měsíců
-                </p>
-              </div>
-              <div className="h-80 w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart 
-                    data={chartData}
-                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
-                  >
-                    <defs>
-                      <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
-                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={1} />
-                      </linearGradient>
-                      <filter id="glow">
-                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                        <feMerge>
-                          <feMergeNode in="coloredBlur"/>
-                          <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                      </filter>
-                    </defs>
-                    <CartesianGrid 
-                      strokeDasharray="3 3" 
-                      stroke="hsl(var(--border))" 
-                      opacity={0.3}
-                    />
-                    <XAxis 
-                      dataKey="name" 
-                      stroke="hsl(var(--muted-foreground))"
-                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                    />
-                    <YAxis 
-                      stroke="hsl(var(--muted-foreground))"
-                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
-                      domain={['auto', 'auto']}
-                      label={{ 
-                        value: 'Index ceny', 
-                        angle: -90, 
-                        position: 'insideLeft',
-                        style: { fill: 'hsl(var(--muted-foreground))', fontSize: 12 }
-                      }}
-                    />
-                    <Tooltip 
-                      contentStyle={{
-                        backgroundColor: 'hsl(var(--card))',
-                        border: '1px solid hsl(var(--border))',
-                        borderRadius: '8px',
-                        padding: '8px 12px'
-                      }}
-                      labelStyle={{ color: 'hsl(var(--foreground))', fontWeight: 600 }}
-                      itemStyle={{ color: 'hsl(var(--primary))' }}
-                      formatter={(value: number) => [`${value.toFixed(2)}`, 'Cena']}
-                    />
-                    <Line 
-                      type="monotone" 
-                      dataKey="cena" 
-                      stroke="url(#lineGradient)"
-                      strokeWidth={3}
-                      dot={{ 
-                        fill: 'hsl(var(--destructive))', 
-                        r: 5,
-                        strokeWidth: 2,
-                        stroke: 'hsl(var(--background))'
-                      }}
-                      activeDot={{ 
-                        r: 7,
-                        fill: 'hsl(var(--primary))',
-                        filter: 'url(#glow)'
-                      }}
-                      isAnimationActive={true}
-                      animationDuration={800}
-                      animationEasing="ease-in-out"
-                    />
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
             {/* Vysvětlení */}
             <div className="pt-6 border-t border-border">
               <div className="bg-muted/30 rounded-lg p-6">
@@ -256,7 +271,7 @@ export default function BondSensitivitySlider() {
                   ) : (
                     <> Při <strong className="text-foreground">nezměněných</strong> úrokových sazbách fond generuje bazický výnos {formatPercentAbs(currentYield)} ročně z kupónových plateb.</>
                   )}
-                  {' '}Graf ukazuje projekci indexu ceny dluhopisu během následujících 12 měsíců.
+                  {' '}Graf ukazuje exponenciální projekci vývoje indexu ceny v čase.
                 </p>
               </div>
             </div>
