@@ -7,8 +7,8 @@ This is a premium landing page for FDI (Fond dlouhodobých investic), a qualifie
 The landing page features an interactive dual-slider bond sensitivity calculator with animated Recharts visualization, real-time fund statistics, and a comprehensive contact form, all built with a focus on premium design aesthetics suitable for financial services.
 
 **Latest Updates (November 2025):**
-- Hero section restructured with proper H1/H2/H3 hierarchy for SEO and accessibility
-- Hero claim split into: H1 "Bankovní sazby klesají.", H2 "Zafixujte si atraktivní výnosy na desetiletí dopředu.", H3 fund description
+- Hero section restructured with streamlined H1/H2 hierarchy for SEO and accessibility
+- Hero claim condensed into: H1 "Bankovní sazby klesají. Zafixujte si atraktivní výnosy na desetiletí dopředu.", H2 fund description
 - Hero section optimized to fit within viewport on first load - reduced padding, spacing, and font sizes while maintaining premium aesthetic
 - All data updated to reflect November 2025 presentation: 6.5-15% p.a. returns, 65 investors, 14.1 year duration, 6.05% YTM
 - Copywriting enhanced to emphasize institutional market access and comparison with direct bond purchases
