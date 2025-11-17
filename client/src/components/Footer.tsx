@@ -1,7 +1,12 @@
+import TrustBadge from "./TrustBadge";
+
 export default function Footer() {
   return (
     <footer className="bg-card border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="flex justify-center mb-10">
+          <TrustBadge />
+        </div>
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="font-serif text-xl font-semibold mb-4">

@@ -1,10 +1,31 @@
 import { Card } from "@/components/ui/card";
 import { TrendingUp, Shield, BarChart3 } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
+import { useEffect, useState, useRef } from "react";
 
 export default function DataStorySection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
       <div className="absolute inset-0" style={{
         backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--primary) / 0.08) 1px, transparent 0)`,
@@ -78,8 +99,11 @@ export default function DataStorySection() {
                     <span className="text-muted-foreground">Pokles -1%</span>
                     <span className="font-semibold text-primary">+15%</span>
                   </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-1000 group-hover:w-3/4" style={{ width: '0%' }} />
+                  <div className="h-3 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-1000 shadow-lg shadow-primary/30"
+                      style={{ width: isVisible ? '75%' : '0%' }}
+                    />
                   </div>
                 </div>
                 
@@ -88,8 +112,11 @@ export default function DataStorySection() {
                     <span className="text-muted-foreground">Nezměněno</span>
                     <span className="font-semibold">7%</span>
                   </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-chart-2 rounded-full" style={{ width: '45%' }} />
+                  <div className="h-3 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-chart-2 to-chart-2/80 rounded-full transition-all duration-1000 delay-200 shadow-lg shadow-chart-2/30" 
+                      style={{ width: isVisible ? '45%' : '0%' }}
+                    />
                   </div>
                 </div>
                 
@@ -98,8 +125,11 @@ export default function DataStorySection() {
                     <span className="text-muted-foreground">Růst +1%</span>
                     <span className="font-semibold text-destructive">-8%</span>
                   </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full bg-destructive/70 rounded-full" style={{ width: '25%' }} />
+                  <div className="h-3 bg-muted rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-destructive to-destructive/80 rounded-full transition-all duration-1000 delay-400 shadow-lg shadow-destructive/30" 
+                      style={{ width: isVisible ? '25%' : '0%' }}
+                    />
                   </div>
                 </div>
               </div>
