@@ -17,15 +17,15 @@ export default function InvestmentThesis() {
               Proč investovat právě teď?
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Současné úrokové sazby jsou historicky vysoké. Investicí do
-              dlouhodobých dluhopisů s fixním výnosem nyní zajistíte výhodné
-              podmínky na desetiletí dopředu.
+              Dlouhodobé úrokové sazby jsou na úrovních, které zde nebyly 20 let.
+              Krátkodobé bankovní sazby (spořící účty, termínované vklady) již začaly klesat
+              a budou i nadále směrovat dolů. 
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Náš fond investuje především do státních dluhopisů s dlouhou
-              durací (15+ let), doplněných o podřízené bankovní dluhopisy se splatností do 10 let
-              a minoritní akciový podíl. Tento přístup umožní zafixovat současné výhodné sazby a při očekávaném
-              poklesu úrokových sazeb přinést nadprůměrný výnos.
+              Investicí do dlouhodobých dluhopisů s fixním úročením nyní zafixujete atraktivní 
+              výnosy na desetiletí dopředu. Náš fond nabízí diverzifikované portfolio 
+              státních a podnikových dluhopisů s průměrnou durací 14,1 let a výnosem do splatnosti 
+              (YTM) 6,05% – to je přístup k institucionálnímu trhu, který není běžným investorům dostupný.
             </p>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
@@ -35,7 +35,7 @@ export default function InvestmentThesis() {
                 <div>
                   <h3 className="font-semibold mb-1">Dlouhodobá fixace výnosů</h3>
                   <p className="text-sm text-muted-foreground">
-                    Státní dluhopisy s durací 15+ let včetně ČR 2057, Electricité de France 2053
+                    TOP emise: CZ 2057, EDF 2053, Vodafone 2081 | Průměrná durace 14,1 let
                   </p>
                 </div>
               </div>
@@ -44,9 +44,9 @@ export default function InvestmentThesis() {
                   <Shield className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">Diverzifikace rizik</h3>
+                  <h3 className="font-semibold mb-1">Přístup k institucionálnímu trhu</h3>
                   <p className="text-sm text-muted-foreground">
-                    15-20 emisí napříč měnami (USD, GBP, CZK, EUR)
+                    Dluhopisy obchodované v min. objemu 100–200 tis. EUR, pro vás dostupné již od 1M Kč
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export default function InvestmentThesis() {
                 <div>
                   <h3 className="font-semibold mb-1">Vysoká likvidita</h3>
                   <p className="text-sm text-muted-foreground">
-                    Výhradně veřejně obchodovatelné cenné papíry
+                    Výhradně veřejně obchodovatelné cenné papíry, měsíční oceňování
                   </p>
                 </div>
               </div>
@@ -72,20 +72,23 @@ export default function InvestmentThesis() {
                   <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                     Očekávaný výnos
                   </p>
-                  <div className="font-bold text-5xl md:text-6xl tabular-nums text-primary">
-                    7<span className="text-3xl">%</span>
+                  <div className="font-bold text-4xl md:text-5xl tabular-nums text-primary">
+                    6,5<span className="text-2xl">%</span> – 15<span className="text-2xl">%</span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">ročně (p.a.)</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    6,5% bez změn v sazbách | 8–15% při poklesu sazeb
+                  </p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                    Daňová sazba
+                    Průměrný YTM
                   </p>
                   <div className="font-bold text-4xl md:text-5xl tabular-nums">
-                    5<span className="text-2xl">%</span>
+                    6,05<span className="text-2xl">%</span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">
-                    daň fondu, po 3 letech osvobozeno
+                    výnos do splatnosti (k 31.10.2025)
                   </p>
                 </div>
               </div>

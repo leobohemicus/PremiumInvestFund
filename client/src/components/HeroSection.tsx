@@ -31,12 +31,12 @@ export default function HeroSection() {
             </div>
 
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-8 tracking-tight leading-[1.05]">
-              Dlouhodobý růst s&nbsp;vysokou <span className="text-primary font-medium">likviditou</span>
+              Bankovní sazby klesají. Zafixujte si&nbsp;atraktivní výnosy na&nbsp;<span className="text-primary font-medium">desetiletí dopředu</span>.
             </h1>
 
             <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed font-light">
-              Fond kvalifikovaných investorů zaměřený na veřejně obchodovatelné
-              dluhopisy s transparentním portfoliem a očekávaným výnosem 7% p.a.
+              Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům 
+              na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -67,7 +67,7 @@ export default function HeroSection() {
                 <div className="flex items-center gap-2 mb-2">
                   <TrendingUp className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
-                    <AnimatedCounter value={7} />%
+                    <AnimatedCounter value={6.5} decimals={1} />–<AnimatedCounter value={15} />%
                   </p>
                 </div>
                 <p className="text-sm font-medium text-muted-foreground">Očekávaný výnos p.a.</p>
@@ -76,19 +76,19 @@ export default function HeroSection() {
                 <div className="flex items-center gap-2 mb-2">
                   <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
-                    <AnimatedCounter value={5} />%
+                    <AnimatedCounter value={14.1} decimals={1} />
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Daň fondu</p>
+                <p className="text-sm font-medium text-muted-foreground">Průměrná durace</p>
               </div>
               <div className="group">
                 <div className="flex items-center gap-2 mb-2">
                   <Award className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
-                    <AnimatedCounter value={15} />–<AnimatedCounter value={20} />
+                    <AnimatedCounter value={65} />
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Emisí v portfoliu</p>
+                <p className="text-sm font-medium text-muted-foreground">Investorů ve fondu</p>
               </div>
             </div>
           </div>

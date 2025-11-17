@@ -5,35 +5,35 @@ export default function BenefitsSection() {
   const benefits = [
     {
       icon: Waves,
-      title: "Vysoká likvidita",
+      title: "Diverzifikace za nižší vstup",
       description:
-        "Investujeme výhradně do veřejně obchodovatelných dluhopisů, které lze kdykoli koupit nebo prodat na regulovaných trzích.",
+        "Jednotlivé dluhopisy vyžadují investici 100–200 tis. EUR (cca 3 mil. Kč). Skrze fond získáte diverzifikované portfolio 10–15 emisí již od 1 mil. Kč.",
       features: [
-        "Veřejně obchodovatelné cenné papíry",
-        "Možnost výstupu kdykoliv",
-        "Transparentní tržní ocenění",
+        "Portfolio 10–15 dlouhodobých dluhopisů",
+        "Měnová diverzifikace USD, GBP, CZK, EUR",
+        "Vstup od 1M Kč místo 3M Kč+",
       ],
     },
     {
       icon: Eye,
       title: "Transparentnost",
       description:
-        "Portfolio je měsíčně oceňováno podle aktuálních tržních cen. Vždy víte, kolik vaše investice skutečně stojí.",
+        "Portfolio je měsíčně oceňováno podle aktuálních tržních cen veřejně obchodovaných dluhopisů. Žádné skryté poplatky či nepřehledné struktury.",
       features: [
-        "Měsíční oceňování portfolia",
-        "Přehledná struktura aktiv",
-        "Pravidelné reporty",
+        "Měsíční oceňování podle tržních cen",
+        "Veřejně obchodovatelné cenné papíry",
+        "Možnost výstupu kdykoliv",
       ],
     },
     {
       icon: Percent,
       title: "Daňová výhodnost",
       description:
-        "Zisky fondu podléhají pouze 5% dani z příjmů. Výnosy z prodeje podílů jsou osvobozeny od daně po 3 letech držby.",
+        "Výrazně nižší daňové zatížení než při přímém nákupu. Daň fondu 5% místo osobní daně 15–23%. Pro USA dluhopisy nehrozí estate tax 18–40%.",
       features: [
-        "Pouze 5% daň z příjmů fondu",
-        "Osvobození po 3 letech",
-        "Daňově efektivní struktura",
+        "Pouze 5% daň fondu místo 15–23%",
+        "Osvobození od daně po 3 letech",
+        "Žádná dědická daň (estate tax)",
       ],
     },
   ];
@@ -49,10 +49,10 @@ export default function BenefitsSection() {
             </span>
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-semibold mb-4 tracking-tight">
-            Proč FDI?
+            Proč skrze FDI místo přímého nákupu?
           </h2>
           <p className="text-lg text-muted-foreground">
-            Kombinace dlouhodobého růstu, transparentnosti a daňové efektivity
+            Nižší vstupní částka, lepší diverzifikace, výrazně nižší daňové zatížení
           </p>
         </div>
 

@@ -54,29 +54,29 @@ export default function DataStorySection() {
               <div className="rounded-full bg-primary/10 p-4 w-fit mb-6 transition-transform duration-300 group-hover:scale-110">
                 <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="font-semibold text-2xl mb-3">Dnešní výnos</h3>
+              <h3 className="font-semibold text-2xl mb-3">Aktuální stav</h3>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
                   <span className="text-5xl md:text-6xl font-bold text-primary tabular-nums">
-                    <AnimatedCounter value={7} />
+                    <AnimatedCounter value={65} />
                   </span>
-                  <span className="text-3xl font-bold text-primary">.0%</span>
+                  <span className="text-3xl font-bold text-primary"></span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">ročně (p.a.)</p>
+                <p className="text-sm text-muted-foreground mt-2">investorů ve fondu (k 31.10.2025)</p>
               </div>
               
               <div className="space-y-4 pt-6 border-t border-border">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Kuponový výnos</span>
-                  <span className="font-semibold">4.2%</span>
+                  <span className="text-sm text-muted-foreground">Průměrná durace</span>
+                  <span className="font-semibold">14,1 let</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Kapitálový zisk</span>
-                  <span className="font-semibold">2.8%</span>
+                  <span className="text-sm text-muted-foreground">Průměrný YTM</span>
+                  <span className="font-semibold">6,05%</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">YTM průměr</span>
-                  <span className="font-semibold">7.0%</span>
+                  <span className="text-sm text-muted-foreground">Zainvestováno</span>
+                  <span className="font-semibold">~45%</span>
                 </div>
               </div>
             </div>
@@ -88,29 +88,29 @@ export default function DataStorySection() {
               <div className="rounded-full bg-chart-2/10 p-4 w-fit mb-6 transition-transform duration-300 group-hover:scale-110">
                 <BarChart3 className="h-8 w-8 text-chart-2" />
               </div>
-              <h3 className="font-semibold text-2xl mb-3">Scénáře sazeb</h3>
+              <h3 className="font-semibold text-2xl mb-3">Scénáře výnosů</h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Jak by pokles sazeb o 1% ovlivnil výnos portfolia
+                Očekávané výnosy podle vývoje dlouhodobých sazeb
               </p>
               
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-muted-foreground">Pokles -1%</span>
-                    <span className="font-semibold text-primary">+15%</span>
+                    <span className="text-muted-foreground">Pokles sazeb</span>
+                    <span className="font-semibold text-primary">8–15% p.a.</span>
                   </div>
                   <div className="h-3 bg-muted rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-1000 shadow-lg shadow-primary/30"
-                      style={{ width: isVisible ? '75%' : '0%' }}
+                      style={{ width: isVisible ? '85%' : '0%' }}
                     />
                   </div>
                 </div>
                 
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="text-muted-foreground">Nezměněno</span>
-                    <span className="font-semibold">7%</span>
+                    <span className="text-muted-foreground">Bez změn</span>
+                    <span className="font-semibold">6,5% p.a.</span>
                   </div>
                   <div className="h-3 bg-muted rounded-full overflow-hidden">
                     <div 
