@@ -97,53 +97,47 @@ export default function HeroSection() {
           <div className="hidden lg:block">
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-3xl blur-3xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative bg-card/60 backdrop-blur-md border-2 border-primary/20 rounded-3xl p-6 shadow-2xl">
-                <div className="space-y-5">
-                  <div className="pb-4 border-b-2 border-primary/10">
-                    <h4 className="text-lg font-semibold mb-1">Portfolio Overview</h4>
-                    <p className="text-xs text-muted-foreground">Aktuální složení investic</p>
+              <div className="relative bg-card/60 backdrop-blur-md border-2 border-primary/20 rounded-3xl p-8 shadow-2xl">
+                <div className="space-y-6">
+                  <div className="text-center pb-5 border-b-2 border-primary/10">
+                    <h4 className="text-lg font-semibold mb-2">Potenciální výnos</h4>
+                    <p className="text-xs text-muted-foreground">Projekce investice 1M Kč</p>
                   </div>
                   
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-medium text-muted-foreground">Státní dluhopisy</span>
-                        <span className="text-base font-bold text-primary">60%</span>
+                  <div className="space-y-5">
+                    <div className="bg-muted/30 rounded-2xl p-5 border border-primary/10">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-medium text-muted-foreground">Konzervativní scénář</span>
+                        <span className="text-xs text-muted-foreground">6,5% p.a.</span>
                       </div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full w-3/5 bg-gradient-to-r from-primary to-primary/80 rounded-full shadow-lg shadow-primary/20 transition-all duration-500 group-hover:w-[62%]" />
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-bold text-primary">1,88M Kč</span>
+                        <span className="text-sm text-muted-foreground">za 10 let</span>
                       </div>
+                      <p className="text-xs text-muted-foreground mt-2">+880 000 Kč zisk</p>
                     </div>
                     
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-medium text-muted-foreground">Bankovní dluhopisy</span>
-                        <span className="text-base font-bold text-chart-2">25%</span>
+                    <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-5 border-2 border-primary/30">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-medium">Optimistický scénář</span>
+                        <span className="text-xs text-muted-foreground">15% p.a.</span>
                       </div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full w-1/4 bg-gradient-to-r from-chart-2 to-chart-2/80 rounded-full shadow-lg shadow-chart-2/20 transition-all duration-500 group-hover:w-[27%]" />
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-3xl font-bold text-primary">4,05M Kč</span>
+                        <span className="text-sm text-muted-foreground">za 10 let</span>
                       </div>
-                    </div>
-                    
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-medium text-muted-foreground">Ostatní aktiva</span>
-                        <span className="text-base font-bold text-chart-4">15%</span>
-                      </div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden">
-                        <div className="h-full w-[15%] bg-gradient-to-r from-chart-4 to-chart-4/80 rounded-full shadow-lg shadow-chart-4/20" />
-                      </div>
+                      <p className="text-xs text-muted-foreground mt-2">+3 050 000 Kč zisk</p>
                     </div>
                   </div>
 
-                  <div className="pt-5 border-t-2 border-primary/10 grid grid-cols-2 gap-4">
-                    <div className="text-center">
-                      <p className="text-xs text-muted-foreground mb-1">Měnová diverzifikace</p>
-                      <p className="text-base font-bold">4 měny</p>
+                  <div className="pt-5 border-t-2 border-primary/10 space-y-3">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Minimální investice</span>
+                      <span className="font-bold">1M Kč</span>
                     </div>
-                    <div className="text-center">
-                      <p className="text-xs text-muted-foreground mb-1">Oceňování NAV</p>
-                      <p className="text-base font-bold">Měsíčně</p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Investiční horizont</span>
+                      <span className="font-bold">3+ roky</span>
                     </div>
                   </div>
                 </div>

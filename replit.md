@@ -126,7 +126,8 @@ Preferred communication style: Simple, everyday language.
 - Investment thesis: Long-term government and corporate bonds with average 14.1 year duration
 - Unique opportunity: Bond rates at 20-year highs before expected decline
 - Target audience: Qualified investors (minimum 1M CZK investment vs. 3M+ CZK for direct purchases)
-- Expected return: 6.5% p.a. (stable scenario) to 8-15% p.a. (if rates fall as expected)
+- Expected return: 6.5% p.a. (conservative scenario) to 15% p.a. (optimistic scenario if rates fall as expected)
+- Hero section highlights concrete returns: 1M CZK → 1.88M CZK (conservative) or 4.05M CZK (optimistic) over 10 years
 - Current fund stats: 65 investors, ~45% invested, 6.05% average YTM, average maturity 2056
 - Top holdings: CZ 2057, EDF 2053, Vodafone 2081
 - Key selling points: 
