@@ -38,6 +38,10 @@ export default function BondSensitivitySlider() {
     return `${sign}${value.toFixed(1)}%`;
   };
 
+  const formatPercentAbs = (value: number) => {
+    return `${value.toFixed(1)}%`;
+  };
+
   return (
     <section className="py-24 md:py-32 bg-gradient-to-b from-muted/30 to-background relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -120,7 +124,7 @@ export default function BondSensitivitySlider() {
             <div className="grid md:grid-cols-3 gap-6 pt-6 border-t border-border">
               <div className="text-center p-6 rounded-lg bg-muted/50">
                 <p className="text-sm text-muted-foreground mb-2">Bazický výnos</p>
-                <p className="text-2xl font-bold text-foreground tabular-nums">
+                <p className="text-2xl font-bold text-foreground tabular-nums" data-testid="value-base-yield">
                   {formatPercent(currentYield)}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">p.a.</p>
@@ -128,7 +132,7 @@ export default function BondSensitivitySlider() {
               
               <div className="text-center p-6 rounded-lg bg-muted/50">
                 <p className="text-sm text-muted-foreground mb-2">Změna ceny dluhopisů</p>
-                <p className={`text-2xl font-bold tabular-nums ${priceChange > 0 ? 'text-primary' : priceChange < 0 ? 'text-destructive' : 'text-foreground'}`}>
+                <p className={`text-2xl font-bold tabular-nums ${priceChange > 0 ? 'text-primary' : priceChange < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="value-price-change">
                   {formatPercent(priceChange)}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">kapitálový zisk/ztráta</p>
@@ -136,7 +140,7 @@ export default function BondSensitivitySlider() {
               
               <div className="text-center p-6 rounded-lg bg-primary/10 border-2 border-primary/20">
                 <p className="text-sm font-semibold text-primary mb-2">Celkový výnos</p>
-                <p className={`text-3xl font-bold tabular-nums ${totalReturn > currentYield ? 'text-primary' : totalReturn < 0 ? 'text-destructive' : 'text-foreground'}`}>
+                <p className={`text-3xl font-bold tabular-nums ${totalReturn > currentYield ? 'text-primary' : totalReturn < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="value-total-return">
                   {formatPercent(totalReturn)}
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">za rok</p>
@@ -240,15 +244,15 @@ export default function BondSensitivitySlider() {
                   Tento model ilustruje citlivost dlouhodobých státních dluhopisů, které tvoří jádro portfolia (60%). 
                   Nastavte duraci ({duration} let) a změnu sazeb ({formatPercent(rateChange)}). 
                   {rateChange < 0 ? (
-                    <> Při <strong className="text-foreground">poklesu</strong> úrokových sazeb o {formatPercent(Math.abs(rateChange))} 
+                    <> Při <strong className="text-foreground">poklesu</strong> úrokových sazeb o {formatPercentAbs(Math.abs(rateChange))} 
                     roste tržní cena existujících dluhopisů, což přináší kapitálový zisk {formatPercent(priceChange)}. 
                     Celkový výnos tak dosahuje <strong className="text-primary">{formatPercent(totalReturn)}</strong>.</>
                   ) : rateChange > 0 ? (
-                    <> Při <strong className="text-foreground">růstu</strong> úrokových sazeb o {formatPercent(rateChange)} 
+                    <> Při <strong className="text-foreground">růstu</strong> úrokových sazeb o {formatPercentAbs(rateChange)} 
                     klesá tržní cena existujících dluhopisů, což znamená kapitálovou ztrátu {formatPercent(priceChange)}. 
                     Celkový výnos činí {formatPercent(totalReturn)}.</>
                   ) : (
-                    <> Při <strong className="text-foreground">nezměněných</strong> úrokových sazbách fond generuje bazický výnos {formatPercent(currentYield)} ročně z kupónových plateb.</>
+                    <> Při <strong className="text-foreground">nezměněných</strong> úrokových sazbách fond generuje bazický výnos {formatPercentAbs(currentYield)} ročně z kupónových plateb.</>
                   )}
                   {' '}Graf ukazuje projekci indexu ceny dluhopisu během následujících 12 měsíců.
                 </p>
