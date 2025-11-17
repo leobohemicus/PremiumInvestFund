@@ -8,7 +8,7 @@ The landing page features an interactive dual-slider bond sensitivity calculator
 
 **Latest Updates (November 2025):**
 - Hero section restructured with streamlined H1/H2 hierarchy for SEO and accessibility
-- Hero claim: H1 "Bankovní sazby klesají." (with "klesají" highlighted in primary color), H2 combines value proposition and fund description
+- Hero claim: H1 "Bankovní sazby klesají." (with "klesají" highlighted in primary color), H2 combines bolded value proposition on first line with fund description on second line
 - Hero section optimized to fit within viewport on first load - reduced padding, spacing, and font sizes while maintaining premium aesthetic
 - All data updated to reflect November 2025 presentation: 6.5-15% p.a. returns, 65 investors, 14.1 year duration, 6.05% YTM
 - Copywriting enhanced to emphasize institutional market access and comparison with direct bond purchases

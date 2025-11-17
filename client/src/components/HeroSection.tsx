@@ -35,7 +35,9 @@ export default function HeroSection() {
             </h1>
 
             <h2 className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed font-light">
-              Zafixujte si&nbsp;atraktivní výnosy na&nbsp;desetiletí dopředu. Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
+              <strong className="font-semibold">Zafixujte si&nbsp;atraktivní výnosy na&nbsp;desetiletí dopředu.</strong>
+              <br />
+              Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
