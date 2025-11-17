@@ -33,7 +33,8 @@ export default function PortfolioSection() {
   ];
 
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-background">
+    <section id="portfolio" className="py-24 md:py-32 bg-background relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block mb-4">

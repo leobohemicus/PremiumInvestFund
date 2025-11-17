@@ -3,7 +3,8 @@ import { TrendingUp, Shield, Clock } from "lucide-react";
 
 export default function InvestmentThesis() {
   return (
-    <section id="strategie" className="py-24 md:py-32 bg-background">
+    <section id="strategie" className="py-24 md:py-32 bg-background relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <div>

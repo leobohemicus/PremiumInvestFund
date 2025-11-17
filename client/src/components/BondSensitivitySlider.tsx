@@ -20,7 +20,8 @@ export default function BondSensitivitySlider() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-muted/30 to-background">
+    <section className="py-24 md:py-32 bg-gradient-to-b from-muted/30 to-background relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="max-w-5xl mx-auto px-6 md:px-8">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
