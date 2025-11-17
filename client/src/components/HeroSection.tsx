@@ -31,12 +31,11 @@ export default function HeroSection() {
             </div>
 
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 tracking-tight leading-[1.1]">
-              Bankovní sazby klesají. Zafixujte si&nbsp;atraktivní výnosy na&nbsp;<span className="text-primary font-medium">desetiletí dopředu</span>.
+              Bankovní sazby <span className="text-primary font-medium">klesají</span>.
             </h1>
 
             <h2 className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed font-light">
-              Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům 
-              na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
+              Zafixujte si&nbsp;atraktivní výnosy na&nbsp;desetiletí dopředu. Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
             </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
