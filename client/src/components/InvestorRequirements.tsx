@@ -20,8 +20,8 @@ export default function InvestorRequirements() {
     },
     {
       title: "Výstupní poplatek",
-      value: "Max. 3%",
-      description: "Při prodeji v prvním roce (poté klesá)",
+      value: "3% / 0%",
+      description: "Třída A: 3% do 1 roku, poté 0%",
     },
   ];
 

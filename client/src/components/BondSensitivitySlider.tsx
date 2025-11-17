@@ -6,11 +6,11 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 export default function BondSensitivitySlider() {
   const [rateChange, setRateChange] = useState(0);
   
-  // Bond with 15-year duration
+  // Fond má státní dluhopisy s durací 15+ let
   const duration = 15;
   const currentYield = 7;
   
-  // Calculate approximate price change based on duration
+  // Výpočet změny ceny podle durace
   const priceChange = -duration * rateChange;
   const totalReturn = currentYield + priceChange;
 
@@ -55,16 +55,16 @@ export default function BondSensitivitySlider() {
                 <Slider
                   value={[rateChange]}
                   onValueChange={(values) => setRateChange(values[0])}
-                  min={-3}
-                  max={3}
+                  min={-4}
+                  max={2}
                   step={0.1}
                   className="cursor-pointer"
                   data-testid="slider-rate-change"
                 />
                 <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                  <span>-3%</span>
+                  <span>-4%</span>
                   <span>0%</span>
-                  <span>+3%</span>
+                  <span>+2%</span>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function BondSensitivitySlider() {
                   Jak to funguje?
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Fond investuje do dlouhodobých dluhopisů s průměrnou durací {duration} let. 
+                  Fond investuje do státních dluhopisů s průměrnou durací {duration} let. 
                   {rateChange < 0 ? (
                     <> Při <strong className="text-foreground">poklesu</strong> úrokových sazeb o {formatPercent(Math.abs(rateChange))} 
                     roste tržní cena existujících dluhopisů, což přináší kapitálový zisk {formatPercent(priceChange)}. 
@@ -122,7 +122,7 @@ export default function BondSensitivitySlider() {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Modelový výpočet pro ilustraci. Skutečné výnosy se mohou lišit v závislosti na konkrétním složení portfolia.
+            * Modelový výpočet pro ilustraci. Skutečné výnosy se mohou lišit v závislosti na konkrétním složení portfolia a tržních podmínkách.
           </p>
         </div>
       </div>

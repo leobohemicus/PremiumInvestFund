@@ -22,8 +22,9 @@ export default function InvestmentThesis() {
               podmínky na desetiletí dopředu.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              Náš fond nakupuje státní a podřízené bankovní dluhopisy s dlouhou
-              durací, což umožní zafixovat současné výhodné sazby a při očekávaném
+              Náš fond investuje především do státních dluhopisů s dlouhou
+              durací (15+ let), doplněných o podřízené bankovní dluhopisy se splatností do 10 let
+              a minoritní akciový podíl. Tento přístup umožní zafixovat současné výhodné sazby a při očekávaném
               poklesu úrokových sazeb přinést nadprůměrný výnos.
             </p>
             <div className="space-y-4">
@@ -34,7 +35,7 @@ export default function InvestmentThesis() {
                 <div>
                   <h3 className="font-semibold mb-1">Dlouhodobá fixace výnosů</h3>
                   <p className="text-sm text-muted-foreground">
-                    Zajištění současných výhodných sazeb až do roku 2057
+                    Státní dluhopisy s durací 15+ let včetně ČR 2057, Electricité de France 2053
                   </p>
                 </div>
               </div>
@@ -84,7 +85,7 @@ export default function InvestmentThesis() {
                     5<span className="text-2xl">%</span>
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">
-                    z příjmů fondu
+                    daň fondu, po 3 letech osvobozeno
                   </p>
                 </div>
               </div>

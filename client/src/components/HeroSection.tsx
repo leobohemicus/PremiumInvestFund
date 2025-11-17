@@ -79,13 +79,13 @@ export default function HeroSection() {
                     <AnimatedCounter value={5} />%
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Daň z příjmů</p>
+                <p className="text-sm font-medium text-muted-foreground">Daň fondu</p>
               </div>
               <div className="group">
                 <div className="flex items-center gap-2 mb-2">
                   <Award className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
-                    <AnimatedCounter value={15} />+
+                    <AnimatedCounter value={15} />–<AnimatedCounter value={20} />
                   </p>
                 </div>
                 <p className="text-sm font-medium text-muted-foreground">Emisí v portfoliu</p>
