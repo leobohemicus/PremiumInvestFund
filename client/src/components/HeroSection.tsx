@@ -31,7 +31,7 @@ export default function HeroSection() {
             </div>
 
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 tracking-tight leading-[1.1]">
-              Bankovní sazby <span className="text-primary font-medium">klesají</span>.
+              Bankovní sazby <span className="text-primary font-medium">klesají</span>
             </h1>
 
             <h2 className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed font-light">
@@ -64,7 +64,7 @@ export default function HeroSection() {
             </div>
 
             <div className="grid grid-cols-3 gap-4 pt-6 border-t-2 border-primary/20">
-              <div className="group">
+              <div className="group flex flex-col items-center text-center">
                 <div className="flex items-center gap-2 mb-1">
                   <TrendingUp className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-2xl md:text-3xl font-bold tabular-nums text-primary">
@@ -73,7 +73,7 @@ export default function HeroSection() {
                 </div>
                 <p className="text-xs font-medium text-muted-foreground">Očekávaný výnos p.a.</p>
               </div>
-              <div className="group">
+              <div className="group flex flex-col items-center text-center">
                 <div className="flex items-center gap-2 mb-1">
                   <Shield className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-2xl md:text-3xl font-bold tabular-nums text-primary">
@@ -82,7 +82,7 @@ export default function HeroSection() {
                 </div>
                 <p className="text-xs font-medium text-muted-foreground">Průměrná durace</p>
               </div>
-              <div className="group">
+              <div className="group flex flex-col items-center text-center">
                 <div className="flex items-center gap-2 mb-1">
                   <Award className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-2xl md:text-3xl font-bold tabular-nums text-primary">
