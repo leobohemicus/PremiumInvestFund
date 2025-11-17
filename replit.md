@@ -4,7 +4,13 @@
 
 This is a premium landing page for FDI (Fond dlouhodobých investic), a qualified investor fund managed by CODYA. The application is designed to present the fund's investment thesis, portfolio structure, and benefits to potential qualified investors in the Czech market. The site emphasizes transparency, liquidity, and long-term growth through publicly traded bonds.
 
-The landing page features an interactive bond sensitivity calculator, animated statistics, and a comprehensive contact form, all built with a focus on premium design aesthetics suitable for financial services.
+The landing page features an interactive dual-slider bond sensitivity calculator with animated Recharts visualization, real-time fund statistics, and a comprehensive contact form, all built with a focus on premium design aesthetics suitable for financial services.
+
+**Latest Updates (November 2025):**
+- Hero claim updated to "Bankovní sazby klesají. Zafixujte si atraktivní výnosy na desetiletí dopředu." - emphasizing urgency and problem-solution framework
+- All data updated to reflect November 2025 presentation: 6.5-15% p.a. returns, 65 investors, 14.1 year duration, 6.05% YTM
+- Copywriting enhanced to emphasize institutional market access and comparison with direct bond purchases
+- Bond calculator now features dual sliders (rate change + duration) with 12-month animated price projection chart
 
 ## User Preferences
 
@@ -34,8 +40,9 @@ Preferred communication style: Simple, everyday language.
 
 **Key Interactive Features:**
 - AnimatedBackground: Canvas-based particle system with reduced-motion support
-- AnimatedCounter: Intersection Observer-based number animations
-- BondSensitivitySlider: Interactive calculator showing bond price sensitivity to interest rate changes
+- AnimatedCounter: Intersection Observer-based number animations with decimal support (e.g., 6.5, 14.1)
+- BondSensitivitySlider: Dual-slider interactive calculator (rate change -4% to +2%, duration 5-20 years) with animated Recharts LineChart showing 12-month bond price trajectory
+- Full WCAG 2.1 AA accessibility with aria-labelledby, <output role="status" aria-live="polite"> for screen readers
 
 ### Backend Architecture
 
@@ -112,11 +119,18 @@ Preferred communication style: Simple, everyday language.
   - Contact Section (inquiry form)
   - Footer (trust badge, links)
 
-**Content Focus:**
-- Investment thesis: Long-term government and corporate bonds with 15+ year duration
-- Target audience: Qualified investors (minimum 1M CZK investment)
-- Expected return: 7% p.a. with monthly portfolio valuation
-- Key selling points: High liquidity, transparency, tax efficiency (5% fund tax, exempt after 3 years)
+**Content Focus (Updated November 2025):**
+- Investment thesis: Long-term government and corporate bonds with average 14.1 year duration
+- Unique opportunity: Bond rates at 20-year highs before expected decline
+- Target audience: Qualified investors (minimum 1M CZK investment vs. 3M+ CZK for direct purchases)
+- Expected return: 6.5% p.a. (stable scenario) to 8-15% p.a. (if rates fall as expected)
+- Current fund stats: 65 investors, ~45% invested, 6.05% average YTM, average maturity 2056
+- Top holdings: CZ 2057, EDF 2053, Vodafone 2081
+- Key selling points: 
+  - Institutional market access (bonds typically require 100-200k EUR minimum)
+  - Lower tax burden (5% fund tax vs. 15-23% personal tax, no estate tax)
+  - High liquidity (monthly NAV valuation, publicly traded securities)
+  - Manager confidence (15M CZK of managers' own capital invested)
 
 **Static Assets:**
 - Investment thesis document stored in `attached_assets/` directory
