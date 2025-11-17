@@ -135,7 +135,7 @@ export default function DataStorySection() {
               </div>
 
               <p className="text-xs text-muted-foreground mt-6 leading-relaxed">
-                * Modelový výpočet založený na duraci 15 let
+                * Modelový výpočet založený na aktuální průměrné duraci 14,1 let
               </p>
             </div>
           </Card>
@@ -146,29 +146,29 @@ export default function DataStorySection() {
               <div className="rounded-full bg-chart-4/10 p-4 w-fit mb-6 transition-transform duration-300 group-hover:scale-110">
                 <Shield className="h-8 w-8 text-chart-4" />
               </div>
-              <h3 className="font-semibold text-2xl mb-3">Historická stabilita</h3>
+              <h3 className="font-semibold text-2xl mb-3">Důvěra manažerů</h3>
               <div className="mb-6">
                 <div className="flex items-baseline gap-2">
                   <span className="text-5xl md:text-6xl font-bold text-chart-4 tabular-nums">
-                    <AnimatedCounter value={98} />
+                    <AnimatedCounter value={15} />
                   </span>
-                  <span className="text-3xl font-bold text-chart-4">.5%</span>
+                  <span className="text-3xl font-bold text-chart-4">&nbsp;mil</span>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">míra splácení</p>
+                <p className="text-sm text-muted-foreground mt-2">vlastních prostředků manažerů</p>
               </div>
               
               <div className="space-y-4 pt-6 border-t border-border">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Počet emisí</span>
-                  <span className="font-semibold"><AnimatedCounter value={15} />+</span>
+                  <span className="text-sm text-muted-foreground">Zkušenosti</span>
+                  <span className="font-semibold">25+ let</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Průměrný rating</span>
-                  <span className="font-semibold">AA-</span>
+                  <span className="text-sm text-muted-foreground">Průměrná splatnost</span>
+                  <span className="font-semibold">2056</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">Max. ztráta (YTD)</span>
-                  <span className="font-semibold">-1.2%</span>
+                  <span className="text-sm text-muted-foreground">Oceňování NAV</span>
+                  <span className="font-semibold">měsíčně</span>
                 </div>
               </div>
             </div>
