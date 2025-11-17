@@ -1,18 +1,37 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { TrendingDown, TrendingUp } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function BondSensitivitySlider() {
   const [rateChange, setRateChange] = useState(0);
+  const [duration, setDuration] = useState(15);
   
-  // Fond má státní dluhopisy s durací 15+ let
-  const duration = 15;
   const currentYield = 7;
   
   // Výpočet změny ceny podle durace
   const priceChange = -duration * rateChange;
   const totalReturn = currentYield + priceChange;
+
+  // Generování dat pro graf - index ceny dluhopisu přes 12 měsíců
+  const chartData = useMemo(() => {
+    const months = ['Led', 'Úno', 'Bře', 'Dub', 'Kvě', 'Čer', 'Čvn', 'Srp', 'Zář', 'Říj', 'Lis', 'Pro'];
+    const monthlyYieldAccrual = currentYield / 12; // Měsíční akruální výnos
+    const monthlyPriceChange = priceChange / 12; // Měsíční kapitálová změna
+    
+    let cumulativeIndex = 100;
+    
+    return months.map((month, index) => {
+      if (index > 0) {
+        cumulativeIndex += monthlyYieldAccrual + monthlyPriceChange;
+      }
+      return {
+        name: month,
+        cena: Number(cumulativeIndex.toFixed(2)),
+      };
+    });
+  }, [rateChange, duration, currentYield, priceChange]);
 
   const formatPercent = (value: number) => {
     const sign = value > 0 ? "+" : "";
@@ -33,15 +52,16 @@ export default function BondSensitivitySlider() {
             Citlivost ceny dluhopisů
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Zjistěte, jak změna úrokových sazeb ovlivní hodnotu portfolia s dlouhými dluhopisy
+            Zjistěte, jak změna úrokových sazeb a durace ovlivní hodnotu portfolia
           </p>
         </div>
 
         <Card className="p-8 md:p-12 border-2">
           <div className="space-y-8">
+            {/* První slider - Změna úrokové sazby */}
             <div className="text-center">
               <p className="text-sm text-muted-foreground mb-4">
-                Změna dlouhodobých úrokových sazeb
+                Změna úrokové sazby (Δy %)
               </p>
               <div className="flex items-center justify-center gap-3 mb-6">
                 <TrendingDown className={`h-6 w-6 ${rateChange < 0 ? 'text-primary' : 'text-muted-foreground/30'}`} />
@@ -69,6 +89,34 @@ export default function BondSensitivitySlider() {
               </div>
             </div>
 
+            {/* Druhý slider - Durace */}
+            <div className="text-center pt-6 border-t border-border">
+              <p className="text-sm text-muted-foreground mb-4">
+                Průměrná délka splatnosti dluhopisu (Durace)
+              </p>
+              <div className="font-bold text-4xl md:text-5xl tabular-nums mb-6">
+                {duration} <span className="text-2xl text-muted-foreground">let</span>
+              </div>
+              
+              <div className="px-4 md:px-12">
+                <Slider
+                  value={[duration]}
+                  onValueChange={(values) => setDuration(values[0])}
+                  min={5}
+                  max={20}
+                  step={1}
+                  className="cursor-pointer"
+                  data-testid="slider-duration"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                  <span>5 let</span>
+                  <span>12 let</span>
+                  <span>20 let</span>
+                </div>
+              </div>
+            </div>
+
+            {/* KPI boxy */}
             <div className="grid md:grid-cols-3 gap-6 pt-6 border-t border-border">
               <div className="text-center p-6 rounded-lg bg-muted/50">
                 <p className="text-sm text-muted-foreground mb-2">Bazický výnos</p>
@@ -95,6 +143,93 @@ export default function BondSensitivitySlider() {
               </div>
             </div>
 
+            {/* Graf */}
+            <div className="pt-6 border-t border-border">
+              <div className="mb-4">
+                <h4 className="font-semibold text-center mb-2">
+                  Projekce indexu ceny dluhopisu
+                </h4>
+                <p className="text-sm text-muted-foreground text-center">
+                  Vývoj během následujících 12 měsíců
+                </p>
+              </div>
+              <div className="h-80 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart 
+                    data={chartData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                  >
+                    <defs>
+                      <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.8} />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={1} />
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <CartesianGrid 
+                      strokeDasharray="3 3" 
+                      stroke="hsl(var(--border))" 
+                      opacity={0.3}
+                    />
+                    <XAxis 
+                      dataKey="name" 
+                      stroke="hsl(var(--muted-foreground))"
+                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                    />
+                    <YAxis 
+                      stroke="hsl(var(--muted-foreground))"
+                      tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }}
+                      domain={['auto', 'auto']}
+                      label={{ 
+                        value: 'Index ceny', 
+                        angle: -90, 
+                        position: 'insideLeft',
+                        style: { fill: 'hsl(var(--muted-foreground))', fontSize: 12 }
+                      }}
+                    />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'hsl(var(--card))',
+                        border: '1px solid hsl(var(--border))',
+                        borderRadius: '8px',
+                        padding: '8px 12px'
+                      }}
+                      labelStyle={{ color: 'hsl(var(--foreground))', fontWeight: 600 }}
+                      itemStyle={{ color: 'hsl(var(--primary))' }}
+                      formatter={(value: number) => [`${value.toFixed(2)}`, 'Cena']}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="cena" 
+                      stroke="url(#lineGradient)"
+                      strokeWidth={3}
+                      dot={{ 
+                        fill: 'hsl(var(--destructive))', 
+                        r: 5,
+                        strokeWidth: 2,
+                        stroke: 'hsl(var(--background))'
+                      }}
+                      activeDot={{ 
+                        r: 7,
+                        fill: 'hsl(var(--primary))',
+                        filter: 'url(#glow)'
+                      }}
+                      isAnimationActive={true}
+                      animationDuration={800}
+                      animationEasing="ease-in-out"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            {/* Vysvětlení */}
             <div className="pt-6 border-t border-border">
               <div className="bg-muted/30 rounded-lg p-6">
                 <h4 className="font-semibold mb-3 flex items-center gap-2">
@@ -102,7 +237,8 @@ export default function BondSensitivitySlider() {
                   Jak to funguje?
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Tento model ilustruje citlivost dlouhodobých státních dluhopisů (durace {duration} let), které tvoří jádro portfolia. 
+                  Tento model ilustruje citlivost dlouhodobých státních dluhopisů, které tvoří jádro portfolia (60%). 
+                  Nastavte duraci ({duration} let) a změnu sazeb ({formatPercent(rateChange)}). 
                   {rateChange < 0 ? (
                     <> Při <strong className="text-foreground">poklesu</strong> úrokových sazeb o {formatPercent(Math.abs(rateChange))} 
                     roste tržní cena existujících dluhopisů, což přináší kapitálový zisk {formatPercent(priceChange)}. 
@@ -114,6 +250,7 @@ export default function BondSensitivitySlider() {
                   ) : (
                     <> Při <strong className="text-foreground">nezměněných</strong> úrokových sazbách fond generuje bazický výnos {formatPercent(currentYield)} ročně z kupónových plateb.</>
                   )}
+                  {' '}Graf ukazuje projekci indexu ceny dluhopisu během následujících 12 měsíců.
                 </p>
               </div>
             </div>
