@@ -18,11 +18,11 @@ export default function BondSensitivitySlider() {
   const chartData = useMemo(() => {
     const finalValue = 100 + totalReturn; // Konečná hodnota odpovídá celkovému výnosu
     
-    // 5 bodů: první 4 fixní kolem 98 (±2.5 pb volatilita), poslední = predikce
+    // 5 bodů: první 4 fixní oscilující kolem 99 (±2 pb volatilita), poslední = predikce
     return [
-      { name: '', cena: 96.0 },   // Bod 1: historická volatilita -2 pb od 98
-      { name: '', cena: 99.5 },   // Bod 2: historická volatilita +1.5 pb od 98
-      { name: '', cena: 97.5 },   // Bod 3: historická volatilita -0.5 pb od 98
+      { name: '', cena: 99.5 },   // Bod 1: start kolem 99-100
+      { name: '', cena: 101.0 },  // Bod 2: oscilace +2 pb nad 99
+      { name: '', cena: 97.0 },   // Bod 3: oscilace -2 pb pod 99
       { name: '', cena: 100 },    // Bod 4: současná hodnota (přesně 100)
       { name: '', cena: Number(finalValue.toFixed(2)) }  // Bod 5: predikce
     ];
