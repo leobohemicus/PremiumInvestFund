@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import InvestmentThesis from "@/components/InvestmentThesis";
 import BenefitsSection from "@/components/BenefitsSection";
+import DataStorySection from "@/components/DataStorySection";
 import BondSensitivitySlider from "@/components/BondSensitivitySlider";
 import PortfolioSection from "@/components/PortfolioSection";
 import InvestorRequirements from "@/components/InvestorRequirements";
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <InvestmentThesis />
       <BenefitsSection />
+      <DataStorySection />
       <BondSensitivitySlider />
       <PortfolioSection />
       <InvestorRequirements />

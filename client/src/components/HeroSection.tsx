@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, TrendingUp, Shield, Award } from "lucide-react";
-import heroImage from "@assets/generated_images/Abstract_financial_data_visualization_4343a14a.png";
+import AnimatedBackground from "./AnimatedBackground";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function HeroSection() {
   const scrollToContact = () => {
@@ -11,16 +12,13 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      <div
-        className="absolute inset-0 z-0 opacity-40"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-background via-background/95 to-background/90" />
+    <section className="relative min-h-[95vh] flex items-center overflow-hidden bg-gradient-to-br from-background via-card/50 to-background">
+      <AnimatedBackground />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-background/80 via-background/90 to-background" />
+      
+      <div className="absolute inset-0 z-0" style={{
+        backgroundImage: `radial-gradient(ellipse at top, hsl(var(--primary) / 0.15) 0%, transparent 50%)`
+      }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -32,11 +30,11 @@ export default function HeroSection() {
               </p>
             </div>
 
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-light mb-6 tracking-tight leading-[1.1]">
-              Dlouhodobý růst s&nbsp;vysokou <span className="text-primary">likviditou</span>
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-light mb-8 tracking-tight leading-[1.05]">
+              Dlouhodobý růst s&nbsp;vysokou <span className="text-primary font-medium">likviditou</span>
             </h1>
 
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-10 leading-relaxed font-light">
               Fond kvalifikovaných investorů zaměřený na veřejně obchodovatelné
               dluhopisy s transparentním portfoliem a očekávaným výnosem 7% p.a.
             </p>
@@ -64,68 +62,87 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
-              <div>
+            <div className="grid grid-cols-3 gap-6 pt-10 border-t-2 border-primary/20">
+              <div className="group">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="h-5 w-5 text-primary" />
-                  <p className="text-2xl md:text-3xl font-bold tabular-nums">7%</p>
+                  <TrendingUp className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+                    <AnimatedCounter value={7} />%
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground">Očekávaný výnos p.a.</p>
+                <p className="text-sm font-medium text-muted-foreground">Očekávaný výnos p.a.</p>
               </div>
-              <div>
+              <div className="group">
                 <div className="flex items-center gap-2 mb-2">
-                  <Shield className="h-5 w-5 text-primary" />
-                  <p className="text-2xl md:text-3xl font-bold tabular-nums">5%</p>
+                  <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+                    <AnimatedCounter value={5} />%
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground">Daň z příjmů</p>
+                <p className="text-sm font-medium text-muted-foreground">Daň z příjmů</p>
               </div>
-              <div>
+              <div className="group">
                 <div className="flex items-center gap-2 mb-2">
-                  <Award className="h-5 w-5 text-primary" />
-                  <p className="text-2xl md:text-3xl font-bold tabular-nums">15+</p>
+                  <Award className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+                    <AnimatedCounter value={15} />+
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground">Emisí v portfoliu</p>
+                <p className="text-sm font-medium text-muted-foreground">Emisí v portfoliu</p>
               </div>
             </div>
           </div>
 
           <div className="hidden lg:block">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl blur-3xl" />
-              <div className="relative bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Státní dluhopisy</span>
-                    <span className="text-sm font-semibold">Hlavní část</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full w-3/5 bg-primary rounded-full" />
+            <div className="relative group">
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-3xl blur-3xl opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative bg-card/60 backdrop-blur-md border-2 border-primary/20 rounded-3xl p-10 shadow-2xl">
+                <div className="space-y-8">
+                  <div className="pb-6 border-b-2 border-primary/10">
+                    <h3 className="text-xl font-semibold mb-2">Portfolio Overview</h3>
+                    <p className="text-sm text-muted-foreground">Aktuální složení investic</p>
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Bankovní dluhopisy</span>
-                    <span className="text-sm font-semibold">Doplněk</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full w-2/5 bg-primary/70 rounded-full" />
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Akciové pozice</span>
-                    <span className="text-sm font-semibold">Menší podíl</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div className="h-full w-1/5 bg-primary/40 rounded-full" />
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium text-muted-foreground">Státní dluhopisy</span>
+                        <span className="text-lg font-bold text-primary">60%</span>
+                      </div>
+                      <div className="h-3 bg-muted rounded-full overflow-hidden">
+                        <div className="h-full w-3/5 bg-gradient-to-r from-primary to-primary/80 rounded-full shadow-lg shadow-primary/20 transition-all duration-500 group-hover:w-[62%]" />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium text-muted-foreground">Bankovní dluhopisy</span>
+                        <span className="text-lg font-bold text-chart-2">25%</span>
+                      </div>
+                      <div className="h-3 bg-muted rounded-full overflow-hidden">
+                        <div className="h-full w-1/4 bg-gradient-to-r from-chart-2 to-chart-2/80 rounded-full shadow-lg shadow-chart-2/20 transition-all duration-500 group-hover:w-[27%]" />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium text-muted-foreground">Ostatní aktiva</span>
+                        <span className="text-lg font-bold text-chart-4">15%</span>
+                      </div>
+                      <div className="h-3 bg-muted rounded-full overflow-hidden">
+                        <div className="h-full w-[15%] bg-gradient-to-r from-chart-4 to-chart-4/80 rounded-full shadow-lg shadow-chart-4/20" />
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="pt-6 border-t border-border grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">Diverzifikace</p>
-                      <p className="text-sm font-semibold">4 měny</p>
+                  <div className="pt-8 border-t-2 border-primary/10 grid grid-cols-2 gap-6">
+                    <div className="text-center">
+                      <p className="text-xs text-muted-foreground mb-2">Měnová diverzifikace</p>
+                      <p className="text-xl font-bold">4 měny</p>
                     </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-1">Oceňování</p>
-                      <p className="text-sm font-semibold">Měsíčně</p>
+                    <div className="text-center">
+                      <p className="text-xs text-muted-foreground mb-2">Oceňování NAV</p>
+                      <p className="text-xl font-bold">Měsíčně</p>
                     </div>
                   </div>
                 </div>
