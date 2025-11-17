@@ -12,7 +12,7 @@ The landing page features an interactive dual-slider bond sensitivity calculator
 - Hero section optimized to fit within viewport on first load - reduced padding, spacing, and font sizes while maintaining premium aesthetic
 - All data updated to reflect November 2025 presentation: 6.5-15% p.a. returns, 65 investors, 14.1 year duration, 6.05% YTM
 - Copywriting enhanced to emphasize institutional market access and comparison with direct bond purchases
-- Bond calculator now features dual sliders (rate change + duration) with 12-month animated price projection chart
+- Bond calculator redesigned with simplified 5-point linear projection model (historical volatility + prediction)
 
 ## User Preferences
 
@@ -43,7 +43,7 @@ Preferred communication style: Simple, everyday language.
 **Key Interactive Features:**
 - AnimatedBackground: Canvas-based particle system with reduced-motion support
 - AnimatedCounter: Intersection Observer-based number animations with decimal support (e.g., 6.5, 14.1)
-- BondSensitivitySlider: Dual-slider interactive calculator (rate change -4% to +2%, duration 5-20 years) with animated Recharts LineChart showing 12-month bond price trajectory
+- BondSensitivitySlider: Dual-slider interactive calculator (rate change -4% to +2%, duration 5-20 years) with Recharts LineChart using simplified 5-point linear projection (4 fixed historical points at 84, 92, 87, 100 + dynamic 5th point showing prediction)
 - Full WCAG 2.1 AA accessibility with aria-labelledby, <output role="status" aria-live="polite"> for screen readers
 
 ### Backend Architecture

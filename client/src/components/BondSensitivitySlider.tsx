@@ -73,7 +73,7 @@ export default function BondSensitivitySlider() {
               </p>
               <div className="flex items-center justify-center gap-2 mb-3">
                 <TrendingDown className={`h-5 w-5 ${rateChange < 0 ? 'text-primary' : 'text-muted-foreground/30'}`} />
-                <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums">
+                <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums" data-testid="output-rate-change">
                   {formatPercent(rateChange)}
                 </output>
                 <TrendingUp className={`h-5 w-5 ${rateChange > 0 ? 'text-destructive' : 'text-muted-foreground/30'}`} />
@@ -103,7 +103,7 @@ export default function BondSensitivitySlider() {
               <p id="duration-label" className="text-sm text-muted-foreground mb-2">
                 Průměrná délka splatnosti dluhopisu (Durace)
               </p>
-              <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums mb-3 block">
+              <output role="status" aria-live="polite" className="font-bold text-3xl md:text-4xl tabular-nums mb-3 block" data-testid="output-duration">
                 {duration} <span className="text-lg text-muted-foreground">let</span>
               </output>
               
@@ -230,7 +230,7 @@ export default function BondSensitivitySlider() {
               
               <div className="text-center p-6 rounded-lg bg-muted/50">
                 <p className="text-sm text-muted-foreground mb-2">Změna ceny dluhopisů</p>
-                <output role="status" aria-live="polite" className={`text-2xl font-bold tabular-nums block ${priceChange > 0 ? 'text-primary' : priceChange < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="value-price-change">
+                <output role="status" aria-live="polite" className={`text-2xl font-bold tabular-nums block ${priceChange > 0 ? 'text-primary' : priceChange < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="output-price-change">
                   {formatPercent(priceChange)}
                 </output>
                 <p className="text-xs text-muted-foreground mt-1">kapitálový zisk/ztráta</p>
@@ -238,7 +238,7 @@ export default function BondSensitivitySlider() {
               
               <div className="text-center p-6 rounded-lg bg-primary/10 border-2 border-primary/20">
                 <p className="text-sm font-semibold text-primary mb-2">Celkový výnos</p>
-                <output role="status" aria-live="polite" className={`text-3xl font-bold tabular-nums block ${totalReturn > currentYield ? 'text-primary' : totalReturn < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="value-total-return">
+                <output role="status" aria-live="polite" className={`text-3xl font-bold tabular-nums block ${totalReturn > currentYield ? 'text-primary' : totalReturn < 0 ? 'text-destructive' : 'text-foreground'}`} data-testid="output-total-return">
                   {formatPercent(totalReturn)}
                 </output>
                 <p className="text-xs text-muted-foreground mt-1">za rok</p>
