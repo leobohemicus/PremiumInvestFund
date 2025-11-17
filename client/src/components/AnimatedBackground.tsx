@@ -4,6 +4,9 @@ export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -12,6 +15,9 @@ export default function AnimatedBackground() {
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 40 : 80;
 
     const particles: Array<{
       x: number;
@@ -22,7 +28,7 @@ export default function AnimatedBackground() {
       opacity: number;
     }> = [];
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
