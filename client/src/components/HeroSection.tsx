@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, TrendingUp, Shield, Award } from "lucide-react";
+import { ArrowRight, TrendingUp, Shield, Award, Coins } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
 import AnimatedCounter from "./AnimatedCounter";
 
@@ -98,7 +98,7 @@ export default function HeroSection() {
               
               <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 hover-elevate transition-all">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+                  <Coins className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
                   <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
                     1M Kč
                   </p>
