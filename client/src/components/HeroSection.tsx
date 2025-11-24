@@ -64,46 +64,46 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="hidden lg:block">
-            <div className="grid grid-cols-2 gap-6">
-              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 hover-elevate transition-all">
-                <div className="flex items-center gap-2 mb-2">
-                  <TrendingUp className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+          <div className="mt-8 lg:mt-0">
+            <div className="grid grid-cols-2 gap-4 lg:gap-6">
+              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-xl lg:rounded-2xl p-4 lg:p-6 hover-elevate transition-all">
+                <div className="flex items-center gap-1.5 lg:gap-2 mb-1 lg:mb-2">
+                  <TrendingUp className="h-4 w-4 lg:h-6 lg:w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-xl lg:text-3xl xl:text-4xl font-bold tabular-nums text-primary">
                     <AnimatedCounter value={6.5} decimals={1} />–<AnimatedCounter value={15} />%
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Očekávaný výnos p.a.</p>
+                <p className="text-xs lg:text-sm font-medium text-muted-foreground">Očekávaný výnos p.a.</p>
               </div>
               
-              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 hover-elevate transition-all">
-                <div className="flex items-center gap-2 mb-2">
-                  <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-xl lg:rounded-2xl p-4 lg:p-6 hover-elevate transition-all">
+                <div className="flex items-center gap-1.5 lg:gap-2 mb-1 lg:mb-2">
+                  <Shield className="h-4 w-4 lg:h-6 lg:w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-xl lg:text-3xl xl:text-4xl font-bold tabular-nums text-primary">
                     <AnimatedCounter value={14.1} decimals={1} />
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Průměrná durace</p>
+                <p className="text-xs lg:text-sm font-medium text-muted-foreground">Průměrná durace</p>
               </div>
               
-              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 hover-elevate transition-all">
-                <div className="flex items-center gap-2 mb-2">
-                  <Award className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-xl lg:rounded-2xl p-4 lg:p-6 hover-elevate transition-all">
+                <div className="flex items-center gap-1.5 lg:gap-2 mb-1 lg:mb-2">
+                  <Award className="h-4 w-4 lg:h-6 lg:w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-xl lg:text-3xl xl:text-4xl font-bold tabular-nums text-primary">
                     <AnimatedCounter value={65} />
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Investorů ve fondu</p>
+                <p className="text-xs lg:text-sm font-medium text-muted-foreground">Investorů ve fondu</p>
               </div>
               
-              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 hover-elevate transition-all">
-                <div className="flex items-center gap-2 mb-2">
-                  <Coins className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
-                  <p className="text-3xl md:text-4xl font-bold tabular-nums text-primary">
+              <div className="group flex flex-col items-center text-center bg-card/40 backdrop-blur-sm border border-primary/20 rounded-xl lg:rounded-2xl p-4 lg:p-6 hover-elevate transition-all">
+                <div className="flex items-center gap-1.5 lg:gap-2 mb-1 lg:mb-2">
+                  <Coins className="h-4 w-4 lg:h-6 lg:w-6 text-primary transition-transform group-hover:scale-110" />
+                  <p className="text-xl lg:text-3xl xl:text-4xl font-bold tabular-nums text-primary">
                     1M Kč
                   </p>
                 </div>
-                <p className="text-sm font-medium text-muted-foreground">Minimální investice</p>
+                <p className="text-xs lg:text-sm font-medium text-muted-foreground">Minimální investice</p>
               </div>
             </div>
           </div>
