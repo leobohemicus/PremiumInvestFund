@@ -20,8 +20,8 @@ export default function HeroSection() {
         backgroundImage: `radial-gradient(ellipse at top, hsl(var(--primary) / 0.15) 0%, transparent 50%)`
       }} />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-8 items-center">
           <div>
             <div className="hidden md:inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <Award className="h-4 w-4 text-primary" />
@@ -30,7 +30,7 @@ export default function HeroSection() {
               </p>
             </div>
 
-            <h1 className="font-serif text-5xl md:text-5xl lg:text-6xl font-light mb-6 md:mb-4 tracking-tight leading-[1.15]">
+            <h1 className="font-serif text-5xl md:text-5xl lg:text-6xl font-light mb-8 md:mb-4 mt-4 md:mt-0 tracking-tight leading-[1.15]">
               Bankovní sazby <span className="text-primary font-medium">klesají</span>
             </h1>
 
