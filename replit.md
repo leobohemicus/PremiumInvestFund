@@ -13,6 +13,7 @@ The landing page features an interactive dual-slider bond sensitivity calculator
 - Hero section optimized to fit within viewport on first load - reduced padding, spacing, and font sizes while maintaining premium aesthetic
 - Mobile responsiveness optimized: statistical boxes now visible on all screen sizes with responsive sizing (smaller padding/icons/text on mobile, larger on desktop)
 - Badge "Pro kvalifikované investory | Min. 1M Kč" hidden on mobile devices for better H1 readability, visible from tablet size up
+- Hero section mobile optimization: H1 increased to text-5xl on mobile, H2 shortened to single sentence on mobile (full text on tablet+), increased spacing between all elements for better breathing room and visual appeal
 - All data updated to reflect November 2025 presentation: 6.5-15% p.a. returns, 65 investors, 14.1 year duration, 6.05% YTM
 - Copywriting enhanced to emphasize institutional market access and comparison with direct bond purchases
 - Bond calculator redesigned with simplified 5-point linear projection model (historical volatility + prediction)

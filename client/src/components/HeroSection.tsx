@@ -30,17 +30,17 @@ export default function HeroSection() {
               </p>
             </div>
 
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light mb-4 tracking-tight leading-[1.1]">
+            <h1 className="font-serif text-5xl md:text-5xl lg:text-6xl font-light mb-6 md:mb-4 tracking-tight leading-[1.15]">
               Bankovní sazby <span className="text-primary font-medium">klesají</span>
             </h1>
 
-            <h2 className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed font-light">
+            <h2 className="text-base md:text-lg text-muted-foreground mb-8 md:mb-6 leading-relaxed font-light">
               <strong className="font-semibold">Zafixujte si&nbsp;atraktivní výnosy na&nbsp;desetiletí dopředu.</strong>
-              <br />
-              Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.
+              <br className="hidden sm:block" />
+              <span className="hidden sm:inline">Fond kvalifikovaných investorů s přístupem k dlouhodobým dluhopisům na úrovních, které zde nebyly 20 let. Výnos 6,5–15% p.a.</span>
             </h2>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 md:mb-0">
               <Button
                 size="lg"
                 onClick={scrollToContact}
