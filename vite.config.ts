@@ -3,12 +3,14 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
+const enableReplitDevPlugins =
+  process.env.NODE_ENV === "development" && process.env.REPL_ID !== undefined;
+
 export default defineConfig({
   plugins: [
     react(),
     runtimeErrorOverlay(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
+    ...(enableReplitDevPlugins
       ? [
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer(),
